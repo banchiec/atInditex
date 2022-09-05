@@ -1,0 +1,105 @@
+.progress_bar {
+  font-family: Arial;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  top: 60px;
+  z-index: 999;
+  height: calc(100vh - 60px);
+}
+.progress_bar__wrapper {
+  overflow: hidden;
+  border-radius: 15px;
+  width: 250px;
+  background-color: #c4c4c4;
+  overflow: hidden;
+}
+.progress_bar__viewer {
+  background: #17997B;
+  border-radius: 4px;
+  height: 4px;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+}
+.progress_bar.animate-loader .progress_bar__viewer {
+  animation: FillAnimation 6s cubic-bezier(0.01, 1.06, 0.71, 1) forwards infinite;
+}
+.progress_bar.animate-loader .progress_bar__state::before {
+  content: '';
+  animation: TextChange 6s infinite;
+}
+.progress_bar__content {
+  display: flex;
+  flex-direction: column;
+}
+.progress_bar__state {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: bold;
+  color: #155366;
+}
+@keyframes FillAnimation {
+  0% {
+    transform: scaleX(0.028);
+  }
+  10% {
+    transform: scaleX(0.028);
+  }
+  20% {
+    transform: scaleX(0.028);
+  }
+  25% {
+    transform: scaleX(0.24);
+  }
+  35% {
+    transform: scaleX(0.24);
+  }
+  45% {
+    transform: scaleX(0.24);
+  }
+  50% {
+    transform: scaleX(0.624);
+  }
+  60% {
+    transform: scaleX(0.624);
+  }
+  70% {
+    transform: scaleX(0.624);
+  }
+  75% {
+    transform: scaleX(0.928);
+  }
+  85% {
+    transform: scaleX(0.928);
+  }
+  95% {
+    transform: scaleX(0.928);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes TextChange {
+  0% {
+    content: attr(data-start);
+  }
+  24% {
+    content: attr(data-start);
+  }
+  25% {
+    content: attr(data-middle);
+  }
+  99% {
+    content: attr(data-middle);
+  }
+  100% {
+    content: attr(data-end);
+  }
+}
