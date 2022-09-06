@@ -5,18 +5,18 @@ export const ContainerProducts =  styled.div`
   justify-content: center;
   flex-wrap: wrap;
 	@media (min-width:768px){
+		border: 1px solid green;
   }
 `
 export const Filter = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding:  15px 0;
   margin: 0 6em;
 `
 export const Search = styled.input`
 	@media (min-width:768px){
-		padding: 0 20px;
+		padding: 2px 30px;
     text-align: end;
     border: none;
     background: whitesmoke;

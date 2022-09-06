@@ -31,11 +31,8 @@ const ProductsScreen = () => {
   return (
     <div>
       <Filter>
-        <h4>LIST ITEM</h4>
-        <Search 
-          type='text' 
-          placeholder="SEARCH"
-        />
+        <h4>List Item</h4>
+        <Search type='text'/>
       </Filter>
       <ContainerProducts>
               { !products ? (

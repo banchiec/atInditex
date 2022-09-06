@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ContainerProducts, Filter, Search } from "./styles/productScreenStyled"
+import { ContainerProducts, Filter } from "./styles/productScreenStyled"
 import { getWithExpiry } from "../../utils/localStorage"
 import CardProductItem from "../../components/Cards/CardProductItem/CardProductItem"
 import Loader from "../../components/Loaders/Loader"
@@ -31,11 +31,8 @@ const ProductsScreen = () => {
   return (
     <div>
       <Filter>
-        <h4>LIST ITEM</h4>
-        <Search 
-          type='text' 
-          placeholder="SEARCH"
-        />
+        <h4></h4>
+        <p></p>
       </Filter>
       <ContainerProducts>
               { !products ? (

@@ -11,7 +11,7 @@ export const Filter = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding:  15px 0;
+  padding:  10px 0;
   margin: 0 6em;
 `
 export const Search = styled.input`

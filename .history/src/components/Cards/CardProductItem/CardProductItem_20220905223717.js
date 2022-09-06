@@ -9,7 +9,7 @@ const CardProductItem = ({ imgUrl, model, price, brand}) => {
 			</div>
 			<article>
 				<h5 className='card_brand'>{`Marca:  ${brand}`}</h5>
-				<p>con tu tarifa Móvil desde <span>{`€${price}`}</span></p>
+				<p>con tu tarifa Móvil desde: <span>{`€${price}`}</span></p>
 			</article>
 		</Card>
 	)
