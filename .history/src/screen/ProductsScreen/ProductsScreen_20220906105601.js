@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
+import { ContainerProducts, Filter, Search } from "./styles/productScreenStyled"
+import { getWithExpiry } from "../../utils/localStorage"
 import CardProductItem from "../../components/Cards/CardProductItem/CardProductItem"
 import Loader from "../../components/Loaders/Loader"
 import { getProducts } from "../../utils/products/products.utils"
-import { getWithExpiry } from "../../utils/localStorage"
-import { ContainerProducts, Filter, Search } from "./styles/productScreenStyled"
 
 const ProductsScreen = () => {
   const [products, setProducts] = useState(null)
@@ -11,15 +11,13 @@ const ProductsScreen = () => {
   const [value, setValue] = useState('')
   const [alert, setAlert] = useState(null)
 
-  useEffect(() => {
-    getProducts()
-  },[])
+
   useEffect(()=> {
     setTimeout(() => {
       setProducts(getWithExpiry('products'));
-      setProductsSearch(getWithExpiry('products'))
     }, 3000);
   },[])
+
   useEffect(() => {
     setTimeout(() => {
       if(getWithExpiry('products') === null){
@@ -38,7 +36,7 @@ const ProductsScreen = () => {
     filter(e.target.value)
   }
   const filter = (searchText) => {
-    let resutlsSearch = productsSearch.filter((product) => {
+    let resutlsSearch = products.filter((product) => {
       if(product.brand.toString().toLowerCase().includes(searchText.toLowerCase())
         || product.model.toString().toLowerCase().includes(searchText.toLowerCase())){
         return product
@@ -46,6 +44,11 @@ const ProductsScreen = () => {
     })
     setProducts(resutlsSearch)
   }
+  useEffect(() => {
+    getProducts()
+  },[])
+
+
   return (
     <div>
       <Filter>

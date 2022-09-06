@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
+import { getWithExpiry } from "../../utils/localStorage"
 import CardProductItem from "../../components/Cards/CardProductItem/CardProductItem"
 import Loader from "../../components/Loaders/Loader"
 import { getProducts } from "../../utils/products/products.utils"
-import { getWithExpiry } from "../../utils/localStorage"
 import { ContainerProducts, Filter, Search } from "./styles/productScreenStyled"
 
 const ProductsScreen = () => {
