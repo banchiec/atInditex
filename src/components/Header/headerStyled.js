@@ -16,4 +16,36 @@ export const ContainerHeader = styled.header`
     font-size: 1.3rem;
     color: #ffff;
   }
+  div{
+      padding: 0;
+      margin:0;
+      p {
+        position: absolute;
+        margin: 0;
+        color: #000;
+        font-weight: 600;
+        text-align: center;
+        font-size: 14px;
+        margin-top: -10px;
+        margin-left: 10px;
+        z-index: 2;
+      }
+    }
+  @media (min-width:768px){
+    div{
+      padding: 0;
+      margin:0;
+      p {
+        position: absolute;
+        margin: 0;
+        color: #000;
+        font-weight: 600;
+        text-align: center;
+        font-size: 14px;
+        margin-top: -10px;
+        margin-left: 10px;
+        z-index: 2;
+      }
+    }
+  }
 `

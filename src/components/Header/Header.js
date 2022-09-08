@@ -3,13 +3,18 @@ import {BsCart} from 'react-icons/bs'
 import * as path from '../../utils/paths' 
 import { ContainerHeader } from "./headerStyled"
 
-const Header = () => {
+const Header = ({counterCart}) => {
   return(
     <ContainerHeader>
       <Link to={path.PRODUCTPAGE}>
         SHOP MOBILE
       </Link>
-      <BsCart/>
+      <div>
+        <p>
+        { counterCart != null ? counterCart?.countItems: 0}
+        </p>
+        <BsCart/>
+      </div>
     </ContainerHeader>
   )
 }
