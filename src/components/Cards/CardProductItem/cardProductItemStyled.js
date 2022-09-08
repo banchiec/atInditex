@@ -11,6 +11,10 @@ export const Card = styled.div`
 	margin: 2em;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	border-radius: 7px;
+	a {
+		text-decoration: none;
+		color: black;
+	}
 	div{
 		text-align: center;
 	}
