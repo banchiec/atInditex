@@ -18,7 +18,7 @@ const ProductsScreen = () => {
     setTimeout(() => {
       setProducts(getWithExpiry('products'));
       setProductsSearch(getWithExpiry('products'))
-    }, 3000);
+    }, 2000);
   },[])
   useEffect(() => {
     setTimeout(() => {
@@ -65,6 +65,7 @@ const ProductsScreen = () => {
             return (
               <CardProductItem 
                 key={item.id} 
+                id = {item.id}
                 imgUrl={item.imgUrl}
                 brand={item.brand}
                 model={item.model}
