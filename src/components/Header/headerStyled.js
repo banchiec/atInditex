@@ -49,3 +49,13 @@ export const ContainerHeader = styled.header`
     }
   }
 `
+export const ListLink = styled.ul`
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+`
+export const ListItem = styled.li`
+  padding:  0 40px;
+  list-style: none;
+`
