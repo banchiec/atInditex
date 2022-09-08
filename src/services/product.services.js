@@ -11,7 +11,5 @@ class ProductsService {
 	getProducts = () => this.instance.get("/")   
 	getOneProduct = (id) => this.instance.get(`/${id}`) 
 	createProduct = (form) => this.instance.post("/new", form)  
-
-
 }
 export default ProductsService; 
