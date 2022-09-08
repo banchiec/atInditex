@@ -10,7 +10,7 @@ export const ContainerDetails = styled.div`
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		padding-top: 12vh;
+		/* height: 90vh; */
 		.active {
 			background-color:  #ffaaba;
 			color: white;

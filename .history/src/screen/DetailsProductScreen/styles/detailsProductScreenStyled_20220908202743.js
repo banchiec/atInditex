@@ -6,11 +6,12 @@ export const ContainerDetails = styled.div`
 	align-items: center;
 
 	@media (min-width:768px){
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		padding-top: 12vh;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr) ;
+		grid-template-areas:
+			"accd"
+		 ;
+		border: 1px solid green;
 		.active {
 			background-color:  #ffaaba;
 			color: white;
