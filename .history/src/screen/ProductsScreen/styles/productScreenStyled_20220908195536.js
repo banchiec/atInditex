@@ -15,10 +15,8 @@ export const Filter = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2em;
-    margin: 0 2em;
     h4{
-      padding: 10px;
+      padding: 0 10px;
       margin: 0;
     }
   }
@@ -26,7 +24,6 @@ export const Filter = styled.div`
 export const Search = styled.input`
 	@media (min-width:768px){
     text-align: end;
-    padding: 0 20px;
     border: none;
     background: whitesmoke;
     border-radius:  5px;/* border: 1px solid green; */

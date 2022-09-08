@@ -26,7 +26,7 @@ export const Filter = styled.div`
 export const Search = styled.input`
 	@media (min-width:768px){
     text-align: end;
-    padding: 0 20px;
+    padding: 0 10px ;
     border: none;
     background: whitesmoke;
     border-radius:  5px;/* border: 1px solid green; */
