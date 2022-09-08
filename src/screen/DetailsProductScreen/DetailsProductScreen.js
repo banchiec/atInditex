@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CartAlert from "../../components/Alerts/CartAlert/CartAlert";
 import Loader from "../../components/Loaders/Loader";
 import { getWithExpiry } from "../../utils/localStorage";
 import { setOneItemCart } from "../../utils/products/cart.utils";
@@ -28,6 +29,9 @@ const DetailsProductScreen = ({handleCounterCart}) => {
   const [active, setActive ] = useState('active')
   const [activeStorage, setActiveStorage] = useState('')
   const [product, setProduct ] = useState({})
+
+  const [alert, setAlert] = useState(false)
+  const [alertAdd, setAlertAdd] = useState(false)
 
   useEffect(() => {
    getDetailsProduct(id)
@@ -78,8 +82,19 @@ const DetailsProductScreen = ({handleCounterCart}) => {
   },[product])
 
   const handleChangeSelector = (e) => {
-    e.target.name === 'colors'? setColors(true): setColors(!colors)
-    e.target.name === 'storage'? setStorage(true): setStorage(!storage)
+    if(e.target.name === 'colors'){
+      setColors(true)
+      setStorage(false)
+    }else{
+      setColors(!colors)
+    }
+
+    if( e.target.name === 'storage'){
+      setStorage(true)
+      setColors(false)
+    }else{
+      setStorage(false)
+    }
 
     e.target.name === 'storage'? (setSelectorStorage(selectorStorage)):(setSelector(selector))
 
@@ -123,17 +138,28 @@ const DetailsProductScreen = ({handleCounterCart}) => {
     const storage = selectorStorage.valuesStorage.filter((item) => {
       return item.active === true
     })
-    const newProductToCart = {
-      id,
-      colorCode: color[0]?.name,
-      storageCode: storage[0]?.name,
+    if(color[0]?.name != null || storage[0]?.name  != null ){
+        const newProductToCart = {
+          id,
+          colorCode: color[0]?.name,
+          storageCode: storage[0]?.name,
+        }
+        let cst = {}
+        setTimeout(() => {
+          cst = getWithExpiry('lastProductInCart')
+          handleCounterCart(cst)
+        }, 1000)
+        setOneItemCart(newProductToCart)
+        setAlertAdd(true)
+    }else{
+      setAlert(true)
     }
-    let cst = {}
-    setTimeout(() => {
-      cst = getWithExpiry('lastProductInCart')
-      handleCounterCart(cst)
-    }, 1000)
-    setOneItemCart(newProductToCart)
+  }
+  const handleCloseAlert = () => {
+    setAlert(false)
+  }
+  const handleCloseAlertAdd = () => {
+      setAlertAdd(false)
   }
 
   return (
@@ -178,19 +204,18 @@ const DetailsProductScreen = ({handleCounterCart}) => {
                           {item.name}
                         </ButtonOptions>
                       )
-                    })
-                    }
-                    {storage &&  selectorStorage?.valuesStorage?.map((item) => {
-                        return(
-                          <ButtonOptions
-                            key={item.name}
-                            item={item}
-                            name={selectorStorage.name}
-                            handleSelectOptions={handleSelectOptions}
-                          />
-                        )
-                      })
-                    }
+                    })}
+                    { storage &&  selectorStorage?.valuesStorage?.map((item) => {
+                      return(
+                        <ButtonOptions
+                          key={item.name}
+                          item={item}
+                          name={selectorStorage.name}
+                          handleSelectOptions={handleSelectOptions}
+                        />
+                      )
+                    })}
+                    
                   </ContainerOptions>
                   <ContainerSelector>
                     <Selector 
@@ -215,6 +240,19 @@ const DetailsProductScreen = ({handleCounterCart}) => {
           </ContainerDetails>
         )
       }
+      {alert && (
+        <CartAlert
+          text= 'Necesitas introducir dos categorias'
+          handleCloseAlert= {handleCloseAlert}
+        />
+      )}
+      {alertAdd && (
+        <CartAlert
+          text= 'Se agrego al carrito'
+          alertAdd={alertAdd}
+          handleCloseAlertAdd = {handleCloseAlertAdd}
+        />
+      )}
     </div>
   )
 }
