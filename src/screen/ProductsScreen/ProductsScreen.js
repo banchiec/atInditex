@@ -4,12 +4,13 @@ import Loader from "../../components/Loaders/Loader"
 import { getProducts } from "../../utils/products/products.utils"
 import { getWithExpiry } from "../../utils/localStorage"
 import { ContainerProducts, Filter, Search } from "./styles/productScreenStyled"
+import AlertStorage from "../../components/Alerts/AlertStorage/AlertStorage"
 
 const ProductsScreen = () => {
   const [products, setProducts] = useState(null)
   const [productsSearch, setProductsSearch] = useState([])
   const [value, setValue] = useState('')
-  const [alert, setAlert] = useState(null)
+  const [alert, setAlert] = useState(false)
 
   useEffect(() => {
     getProducts()
@@ -20,17 +21,20 @@ const ProductsScreen = () => {
       setProductsSearch(getWithExpiry('products'))
     }, 2000);
   },[])
+
+  const handleLoadProductStorage = () => {
+    setTimeout(() => {
+      setProducts(getWithExpiry('products'));
+      setProductsSearch(getWithExpiry('products'))
+    }, 2000);
+  }
   useEffect(() => {
     setTimeout(() => {
       if(getWithExpiry('products') === null){
-        setAlert(
-          <div>
-            <h1>Es necesario volver a solicitar la información</h1>
-          </div>
-        )
+        setAlert(true)
         setProducts([])
       }
-    }, 3600000)
+    }, 360000)
   },[])
 
   const handleGetProduct = (e) => {
@@ -45,6 +49,9 @@ const ProductsScreen = () => {
       }
     })
     setProducts(resutlsSearch)
+  }
+  const handleCloseAlert = () => {
+    setAlert(false)
   }
   return (
     <div>
@@ -75,6 +82,13 @@ const ProductsScreen = () => {
         })) }
         {alert}
       </ContainerProducts>
+      {alert && (
+        <AlertStorage
+          text='Es necesario recargar los datos'
+          handleCloseAlert={handleCloseAlert}
+          handleLoadProductStorage={handleLoadProductStorage}
+        />
+      )}
     </div>
   )
 }
