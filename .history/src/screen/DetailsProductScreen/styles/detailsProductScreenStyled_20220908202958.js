@@ -8,9 +8,7 @@ export const ContainerDetails = styled.div`
 	@media (min-width:768px){
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		padding-top: 12vh;
+		height: 90vh;
 		.active {
 			background-color:  #ffaaba;
 			color: white;
